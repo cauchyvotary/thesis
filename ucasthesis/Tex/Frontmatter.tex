@@ -1,0 +1,48 @@
+%---------------------------------------------------------------------------%
+%->> Frontmatter
+%---------------------------------------------------------------------------%
+%-
+%-> 生成封面
+%-
+\maketitle% 生成中文封面
+\MAKETITLE% 生成英文封面
+%-
+%-> 作者声明
+%-
+\makedeclaration% 生成声明页
+%-
+%-> 中文摘要
+%-
+\intobmk\chapter*{摘\quad 要}% 显示在书签但不显示在目录
+\setcounter{page}{1}% 开始页码
+\pagenumbering{Roman}% 页码符号
+
+虚拟现实(VR)和增强现实(AR)技术的发展使得数字化真实世界成为学术和工业探索的热点，人和物体的几何表达是其中重要的技术环节。 几何表达有多种数学形式和数据结构，在不同的应用中各有优劣。近年来深度学习已经应用到几何重建和渲染中，同样需要选取特定几何表达形式作为中间件。本文讨论将隐式几何表达结合到深度学习的统一框架，以编解码器为核心结构，将输入数据经编码器变换到特征空间，接着将特定的隐式几何表达嵌入到网络中，同时把数学物理过程表达成神经网络的计算图。最终根据特定任务，设计输出层。为了说明该思想，以多视角图片视角插值渲染和点云重建这两个任务为例。对于视角插值渲染，将传统的两视角线性插值革新为以三视角为核心的圆环上的插值模型，以基于视差的隐式几何作为神经网络解码器的输出，并辅以可视化区域的预测，同时将插值计算过程写成可导的神经网络层，构建了基于编解码器结构的插值网络。在人体数据集和一般物体数据集上的实验表明效果明显优于之前的方法。对于点云重建，借助可导渲染将点云投影到多视角并经编码器变换到特征空间，将解码器赋予隐函数的物理意义，用以预测空间任意点的隐函数值，通过提取等值面生成几何模型。在多个数据集上的实验表明新方法提高了点云重建对噪声的鲁棒性和重建效果。通过两个具体应用突出了隐式表达既能精确描述模型的几何，又具备连续可导等性质，适合与深度学习技术结合，实现数据先验与经验知识的结合。
+
+本文的主要贡献如下：
+\begin{enumerate}
+\item 设计了结合隐式表达的深度学习框架用以表达和学习几何信息。
+\item 在自由视角插值的应用中，基于引入的隐式表达形式，提出了基于三相机的环形插值模型和相应的矫正算法，革新了之前的两相机插值模型。
+\item 在点云重建的应用中，基于引入的隐式表达和深度学习框架，提出将点云先通过点投影的方式进行多视角的2D网格化，再预测隐式表达形式的方法，适用于单视角和多视角的情形，提高了点云重建的鲁棒性。
+\end{enumerate}
+
+
+
+
+\keywords{隐式表达，三维重建，自由视角插值，神经渲染}% 中文关键词
+%-
+%-> 英文摘要
+%-
+\intobmk\chapter*{Abstract}% 显示在书签但不显示在目录
+
+With the development of virtual reality (VR) and augmented reality (AR) technology, digitalizing the real world has become a hot topic in both academy and industry. The geometry of human body and general objects is an important technique. There are many mathematical forms and data structures for geometry, which have their own advantages and disadvantages in different applications. In recent years, deep learning has been applied to 3D reconstruction and rendering, and it also need to select specific geometric representation as middleware. This paper discusses a unified framework that combines implicit geometric representation with deep learning. With a core encoder-decoder structure, the input data is transformed to feature space through encoder, and then the specific implicit geometry is embeded into the network. At the same time, the mathematical and physical process is represented as the computation graph of neural network. Finally, the output layer is designed according to the specific task. In order to illustrate the idea, this paper discuss two specific applications: view morphing and point cloud reconstruction. For view morphing, the traditional two-view linear interpolation is replaced by the new three-view cyclic morphing framework. Parallax is chosen as the output of the decoder, at the same time the visual mask is predicted. The interpolation process is implemented as a differential layer. Experiments on human body data and general object show that the performance is better than the previous methods. For the pointcloud reconstruction, the pointcloud is rendered to multiple views and encoded to the feature space. The decoder is expected to be the implicit function of the underlying true geometry, it can predict the isovalue of any point in the 3D space. The mesh is extracted using marching cubes algorithm. Experiments on several datasets show that the new method improves the robustness to noise and also the reconstruction performance. Through the two specific applications, it shows that implicit geometric representation is accurate with continuous derivative. It is suitable to combine with deep learning to acquire the data prior and empirical knowledge at once.
+
+The contribution of this thesis is summarized as follows:
+\begin{enumerate}
+\item This thesis designs a learning-based framework combining implicit geometric representation, to encode and learn geometric information.
+\item In the application relating to free-viewpoint interpolation, this thesis proposes a cyclic triplet-camera model for interpolation and rectification, which is a key improvement to the previous two-camera model.
+\item In the application relating to pointcloud reconstruction, this thesis proposes a pipeline of multi-view 2D rasterization followed by point-based projection, to encode the feature of pointcloud for later implicit geometry prediction. This pipeline applies to both cases of single view or multiple views, which attains better robustness than previous methods.
+\end{enumerate}
+
+\KEYWORDS{Implicit representation, 3D Reconstruction, Free viewpoint interpolation, Neural rendering}% 英文关键词
+%---------------------------------------------------------------------------%
